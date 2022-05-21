@@ -18,6 +18,7 @@
         "php-http/httplug-bundle": "^1.16",
         "phpdocumentor/reflection-docblock": "^4.3",
         "sensio/framework-extra-bundle": "^5.1",
+        "stripe/stripe-php": "^7.125",
         "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
         "symfony/dotenv": "4.3.*",

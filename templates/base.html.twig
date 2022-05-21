@@ -9,6 +9,17 @@
     Computer Engineering, Symfony Framework<br>
         {% block body %}{% endblock %}
         <br> ********* Test ********* <br>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        $(document).ready(function() {
+    if (!$('.g-plusone').length) return;
+
+    window.___gcfg = {lang: 'fr-FR'};
+
+    var g = document.createElement('script');
+    g.async = true;
+    g.src = document.location.protocol + 'apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
+});
+        {% endblock %}
     </body>
 </html>

@@ -5,7 +5,11 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
-
+:root {
+  --star-size: 60px;
+  --star-color: #666666;
+  --star-background: #fc0;
+}
 body {
   font-family: 'Roboto', sans-serif;
   background:;
@@ -2520,4 +2524,22 @@ h2.title {
   color: #FE980F;
 }
 
-
+.checked {
+  color: #fe9a3b;
+}
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  display: inline-block;
+  font-size: 26px;
+  font-family: Times; // make sure ★ appears correctly
+  line-height: 1;
+  
+}
+.Stars::before {
+    content: '★★★★★';
+    display: block;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }

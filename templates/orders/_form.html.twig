@@ -2,61 +2,65 @@
 {{ form_start(form) }}
 <form class="form-horizontal" name="order" action="{{ path('orders_new') }}" method="post">
     <fieldset>
-        <label class="col-sm-3 control-label">Ödenecek Tutar:</label>
+        <label class="col-sm-3 control-label">Amount to be paid:</label>
         <div class="control-group" col-sm-5>
             <input type="text" name="orders[amount]" value="{{ total }}" placeholder="name" class="input-xlarge"/>
         </div>
         <hr>
-        KARGO ALICI BİLGİLERİ
+        CARGO BUYER INFORMATION
         <hr>
-        <label class="col-sm-3 control-label">Adı Soyadı:</label>
+        <label class="col-sm-3 control-label">Name and surname:</label>
         <div class="control-group" col-sm-5>
             <input type="text" name="orders[name]" value="{{ app.user.name }}" placeholder="name" class="input-xlarge"/>
         </div>
 
-        <label class="col-sm-3 control-label">Adresi:</label>
+        <label class="col-sm-3 control-label">address:</label>
         <div class="control-group" col-sm-5>
             <input type="textarea" name="orders[address]" value="{{ app.user.address }}" placeholder="Adresi" class="input-xlarge"/>
         </div>
 
-        <label class="col-sm-3 control-label">Şehir:</label>
+        <label class="col-sm-3 control-label">City:</label>
         <div class="control-group" col-sm-5>
             <input type="text" name="orders[city]" value="{{ app.user.city }}" placeholder="subject" class="input-xlarge"/>
         </div>
 
-        <label class="col-sm-3 control-label">Telefon:</label>
+        <label class="col-sm-3 control-label">Phone:</label>
         <div class="control-group" col-sm-5>
             <input type="text" name="orders[phone]" value="{{ app.user.phone }}" placeholder="subject" class="input-xlarge"/>
         </div>
         <hr>
 
-        KREDİ KARTI BİLGİLERİ
+        CREDIT CARD INFORMATION
         <hr>
-        <label class="col-sm-3 control-label">Adı Soyadı:</label>
+        <label class="col-sm-3 control-label">Name and surname:</label>
         <div class="control-group" col-sm-5>
-            <input type="text" name="cardholdersname" placeholder="Kart adı soyadı" class="input-xlarge"/>
+            <input type="text" name="cardholdersname" placeholder="Card name surname
+             class="input-xlarge"/>
         </div>
 
-        <label class="col-sm-3 control-label">Kart Numarası:</label>
+        <label class="col-sm-3 control-label">Card number:</label>
         <div class="control-group" col-sm-5>
-            <input type="text" name="cardnumber" placeholder="Kart Numarası" class="input-xlarge"/>
+            <input type="text" name="cardnumber" placeholder="Card Number" class="input-xlarge"/>
         </div>
 
-        <label class="col-sm-3 control-label">Son Kullanma Tarihi:</label>
+        <label class="col-sm-3 control-label">Expiration date:</label>
         <div class="control-group" col-sm-3>
             <input type="text" name="cardvaliddates" placeholder="AY/YIL" class="input-xlarge"/>
         </div>
 
-        <label class="col-sm-3 control-label">Güvenlik Kodu:</label>
+        <label class="col-sm-3 control-label">Security Code:</label>
         <div class="control-group" col-sm-5>
-            <input type="number" name="cardsecuritycode" placeholder="Güvenlik kodu" class="input-xlarge"/>
+            <input type="number" name="cardsecuritycode" placeholder="Security Code" class="input-xlarge"/>
         </div>
 
         <input type="hidden" name="token" value="{{ csrf_token('form-order') }}" />
 
         <label class="col-sm-3 control-label"> </label>
         <div class="control-group" col-sm-5>
-            <input class="shopBtn" type="submit" value="SATIN AL"/>
+            <input class="shopBtn" type="submit" value="Buy"/>
         </div>
     </fieldset>
+</form>
+<form action="/checkout" method="POST">
+        <button type="submit" class="btn btn-primary btn-lg">Checkout</button>
 </form>

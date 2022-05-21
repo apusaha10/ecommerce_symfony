@@ -21,7 +21,7 @@
                                             <div class="product-image-wrapper">
                                                 <div class="single-products">
                                                     <div class="productinfo text-center">
-                                                        <a href="{{ path('product_show', {'id': rs.id}) }} " class="btn btn-default add-to-cart">
+                                                        <a href="{{ path('product_show', {'id': product.id}) }} " class="btn btn-default add-to-cart">
                                                             <img src="{{ asset('uploads/images/' ~ rs.image) }}" alt="" style="height: 268px; width: 160px;" alt="" />
                                                         </a>
                                                     </div>
@@ -74,16 +74,16 @@
 
                         <form name="shopcart" class="form-horizontal qtyFrm" action="{{ path('shopcart_new') }}" method="post">
                             <div class="control-group">
-                                <label class="control-label"><span>Fiyatı: {{ product.price }} TL</span></label>
+                                <label class="control-label"><span>Price: {{ product.price }} TL</span></label>
                                 <br>
                                 <div class="controls">
-                                    Alacağınız Adet:
+                                    The Quantity You Will Get:
                                     <input type="number" name="shopcart[Q]" class="span6" value="1" placeholder="Qty" max="{{ product.amount }}">
                                     <input type="hidden" name="shopcart[ID]" value="{{ product.id }}">
                                 </div>
                             </div>
 
-                            <h4> {{ product.amount }} Adet stokta var</h4>
+                            <h4> {{ product.amount }} Pieces in stock</h4>
                             <p> {{ product.description }}</p>
                             <input type="hidden" name="token" value="{{ csrf_token('add-item') }}">
 
@@ -121,8 +121,10 @@
 
                     <div class="tab-pane fade active in" id="reviews">
                         {% for rs in comments %}
-                            <div class="col-sm-12">
-                                <h5>{{ rs.subject }} [Rate : {{ rs.rate }}]</h5>
+                            <div class="col-sm-12" >
+                            <span class="Stars" style="--rating: {{ rs.rate }};" ></span>
+                            
+                                <h5>{{ rs.subject }}</h5>
                                 <p>
                                     {{ rs.comment }}
                                 </p>

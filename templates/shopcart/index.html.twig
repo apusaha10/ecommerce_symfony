@@ -42,7 +42,7 @@
                                                     <td>{{ shopcart.quantity }}</td>
                                                     <td>{{ shopcart.quantity * shopcart.price }}</td>
                                                     <td>
-                                                        <a href="{{ path('shopcart_del', {'id': shopcart.id}) }}" onclick="return confirm('Silinecek Emin misin?');" class = "btn btn-danger">Delete</a>
+                                                        <a href="{{ path('shopcart_del', {'id': shopcart.id}) }}" onclick="return confirm('Will be deleted Are you sure?');" class = "btn btn-danger">Delete</a>
                                                     </td>
                                                 </tr>
                                                 {% set total = total + (shopcart.quantity * shopcart.price) %}
@@ -52,11 +52,11 @@
                                                 </tr>
                                             {% endfor %}
                                             <tr>
-                                                <td colspan="5"> <b>Toplam Alışveriş Tutarı: {{ total }}</b></td>
+                                                <td colspan="5"> <b>Total Purchase Amount: {{ total }}</b></td>
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <a href="{{ path('orders_new') }}" class="btn btn-block btn-success btn-large" >Ürünleri Satın Al</a>
+                                        <a href="{{ path('orders_new') }}" class="btn btn-block btn-success btn-large" >Purchase</a>
                                     </div>
                                 </div>
                             </section>

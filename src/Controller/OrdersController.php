@@ -12,6 +12,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @Route("/orders")
@@ -46,8 +49,8 @@ class OrdersController extends AbstractController
         $submittedToken = $request->request->get('token'); // get csrf token information
         if($this->isCsrfTokenValid('form-order', $submittedToken)){
             if ($form->isSubmitted()) {
-                // Kredi kartı bilgilerini ilgili banka servisine gönder
-                // Onay gelirse kaydetmeye devam et yoksa order sayfasına hata gönder
+                // your order has been successfully made
+                // if confirmation is received, continue to save , other wise send an error to the order page
 
                 $entityManager = $this->getDoctrine()->getManager();
                 $orders->setUserid($userid);
@@ -81,9 +84,9 @@ class OrdersController extends AbstractController
                 $query = $entityManager->createQuery('
                 DELETE FROM App\Entity\Shopcart s WHERE s.userid=:userid
                 ')
-                    ->setParameter('userid', $userid);
+                      ->setParameter('userid', $userid);
                 $query->execute();
-                $this->addFlash('success', 'Siparişleriniz Başarıyla Gerçekleştirilmiştir <br> Teşekkür ederiz');
+                $this->addFlash('success', 'Your Order Has Been Successfully Completed <br> Thank You');
                 return $this->redirectToRoute('orders_index');
             }
 
@@ -94,6 +97,7 @@ class OrdersController extends AbstractController
             'total' => $total,
             'form' => $form->createView(),
         ]);
+
     }
 
     /**

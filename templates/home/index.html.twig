@@ -27,7 +27,6 @@
                                 </a>
                                 <h2>{{ rs.price }} $</h2>
                                 <p>{{ rs.title}} </p>
-
                             </div>
 
                         </div>
@@ -35,6 +34,8 @@
                             <ul class="nav nav-pills nav-justified">
                                 <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
                                 <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                <li><a href="https://plus.google.com/share?url=http://localhost:8000/{{ path('product_show', {'id': rs.id}) }}"><i class=" g-plus fa fa-google-plus"></i>Share this Product</a><li>
+
                             </ul>
                         </div>
                     </div>

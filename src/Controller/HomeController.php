@@ -52,7 +52,9 @@ class HomeController extends AbstractController
     public function show(Product $product, $id, ImageRepository $imageRepository, CommentRepository $commentRepository): Response
     {
         $images = $imageRepository->findBy(['product'=>$id]);
-        $comments = $commentRepository->findBy(['productid'=>$id,'status'=>'True']);
+        // all comments product wise is set here
+        $comments = $commentRepository->findBy(['productid'=>$id]);
+        // print_r($comments);
 
 
         return $this->render('home/productshow.html.twig', [
